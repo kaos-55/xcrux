@@ -1,0 +1,15 @@
+ Description: notify-send drop-in replacement with more features.
+# URL: https://github.com/vlevit/notify-send.sh
+# Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
+# Depends on: glib 
+
+name=notify-send.sh
+version=1.2
+release=1
+source=(https://github.com/vlevit/$name/archive/v"$version".tar.gz)
+
+build() {
+    cd $name-$version
+    install -Dm0755 notify-send.sh "$PKG/usr/bin/notify-send.sh"
+    install -Dm0755 notify-action.sh "$PKG/usr/bin/notify-action.sh"
+}

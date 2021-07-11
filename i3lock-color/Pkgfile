@@ -1,0 +1,25 @@
+# Description: An improved screenlocker based upon XCB and PAM with color configuration support
+# URL: https://github.com/Raymo111/i3lock-color
+# Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
+# Depends on: xorg-xcb-util-image pam libev cairo libxkbcommon libjpeg-turbo xorg-xcb-util-xrm pkgconf 
+
+name=i3lock-color
+version=2.13.c.4
+release=1
+source=(https://github.com/Raymo111/$name/archive/refs/tags/$version.tar.gz)
+
+build() {
+	cd "$name-$version"
+	
+	autoreconf -fi
+	./configure --prefix="$PKG/usr/" \
+        --sysconfdir="$PKG/etc/" \
+        --enable-debug=no \
+        --disable-sanitizers
+	make
+
+	make install
+	install -Dm644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}
+
+

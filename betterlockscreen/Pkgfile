@@ -1,0 +1,20 @@
+# Description: A simple, minimal lockscreen
+# URL: https://github.com/pavanjadhaw/betterlockscreen
+# Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
+# Depends on: bc feh i3lock-color imagemagick xorg-xdpyinfo xorg-xrandr 
+
+name=betterlockscreen
+version=3.2.0
+release=1
+source=(https://github.com/pavanjadhaw/$name/archive/refs/tags/$version.tar.gz)
+
+build() {
+    cd $name-$version
+    
+    #We don't need these service
+    rm -r system
+    
+    install -Dm 755 "$name" -t "$PKG"/usr/bin/
+    install -Dm 644 examples/"${name}rc" -t "$PKG"/usr/share/doc/betterlockscreen/examples/
+    install -Dm 644 LICENSE -t "$PKG"/usr/share/licenses/"$name"/
+}

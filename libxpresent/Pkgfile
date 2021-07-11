@@ -1,0 +1,22 @@
+# Description: X Present Extension library
+# URL: https://gitlab.freedesktop.org/xorg/lib/libxpresent
+# Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
+# Depends on: xorg-libxfixes xorg-libxrandr xorg-util-macros xorg-xorgproto
+
+name=libxpresent
+version=1.0.0
+release=1
+source=(https://gitlab.freedesktop.org/xorg/lib/$name/-/archive/libXpresent-$version/$name-libXpresent-$version.tar.gz)
+
+build() {
+	cd $name-libXpresent-$version
+
+  	./autogen.sh --prefix=/usr --disable-dependency-tracking
+	sed -i -e '/\$CC/s/-shared/\0 -Wl,--as-needed/' libtool
+
+	make
+	
+	make DESTDIR=$PKG install
+	install -D -m 0644 COPYING $PKG/usr/share/licenses/${pkgname}/LICENSE
+}
+

@@ -1,0 +1,24 @@
+# Description: Emerald window decorator
+# URL: https://gitlab.com/compiz/emerald/
+# Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
+# Depends on: compiz gtk3 libwnck-gtk3 intltool gettext pkgconf 
+
+name=emerald
+version=0.8.18
+release=1
+source=(https://gitlab.com/compiz/$name/-/archive/v$version/$name-v$version.tar.bz2)
+
+build() {
+   cd "$SRC/$name-v$version"
+
+  NOCONFIGURE=1 LIBS+="-lm -ldl" ./autogen.sh
+  ./configure --prefix=/usr --with-gtk=3.0
+
+  make
+
+  cd $SRC/$name-v$version
+  make DESTDIR=$PKG install
+
+}
+
+

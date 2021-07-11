@@ -1,0 +1,19 @@
+# Description: Window manager of GNOME Flashback
+# URL: https://wiki.gnome.org/Projects/Metacity'
+# Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
+# Depends on: dconf libcanberra libgtop xorg-libsm xorg-libxres libxpresent gsettings-desktop-schemas gtk3 startup-notification zenity
+
+name=metacity
+version=3.40.0
+release=1
+source=(https://download.gnome.org/sources/$name/3.40/$name-$version.tar.xz)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr --disable-schemas-compile
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+  make DESTDIR=$PKG install
+}
+
+

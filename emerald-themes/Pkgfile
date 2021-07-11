@@ -1,0 +1,22 @@
+# Description: Themes for emerald
+# URL: https://gitlab.com/compiz/emerald-themes/
+# Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
+# Depends on: emerald intltool pkgconf
+
+name=emerald-themes
+version=0.8.18
+release=1
+source=(https://gitlab.com/compiz/$name/-/archive/v$version/$name-v$version.tar.bz2)
+
+build() {
+  cd $SRC/$name-v$version
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure --prefix=/usr 
+  make
+
+  cd $SRC/$name-v$version
+  make DESTDIR=$PKG install 
+
+}
+
+

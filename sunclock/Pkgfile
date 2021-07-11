@@ -1,0 +1,35 @@
+# Description: An astronomical world map that shows day and night and the Sun and Moon positions
+# URL: https://www.spinnaker.de/debian/sunclock.html
+# Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
+# Depends on: libjpeg-turbo libpng libxpm xorg-imake tar
+
+name=sunclock
+version=3.57
+release=1
+source=(https://github.com/nongiach/Sunclock/raw/master/$name-$version.tar.bz2
+        disable_zlib.patch
+        sunclock.desktop)
+
+build() {
+
+  cd $name-$version
+  # Apply a Debian patch to disable zlib
+  patch -p1 -i $SRC/disable_zlib.patch
+  # Fix path to 'emx' binary
+  sed -i "s_/share/sunclock/bin_/bin_" Imakefile
+  xmkmf
+  make
+
+  # Install program files
+  make DESTDIR="$PKG" \
+       BINDIR=/usr/bin \
+       EMXBINDIR=/usr/bin \
+       SHAREDIR=/usr/share/$name \
+       MANDIR=/usr/share/man/man1 install
+  # Install data files
+  install -Dm644 README "$PKG/usr/share/doc/sunclock/README"
+  # Install a desktop entry
+  install -Dm644 wm_icons/sunclock2.xpm "$PKG/usr/share/pixmaps/$name.xpm"
+  install -Dm644 $SRC/$name.desktop "$PKG/usr/share/applications/$name.desktop"
+
+}

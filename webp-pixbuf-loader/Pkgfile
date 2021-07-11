@@ -1,0 +1,15 @@
+# Description: WebM GDK Pixbuf Loader library
+# URL: https://github.com/aruiz/webp-pixbuf-loader
+# Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
+# Depends on: gdk-pixbuf libwebp 
+
+name=webp-pixbuf-loader
+version=0.0.3
+release=1
+source=(https://github.com/aruiz/webp-pixbuf-loader/archive/$version/$name-$version.tar.gz)
+
+build() {
+  meson $name-$version build
+  ninja -C build
+  DESTDIR="$PKG" ninja -C build install
+}

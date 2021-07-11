@@ -1,0 +1,22 @@
+# Description: A background browser and setter for X windows.
+# URL: http://projects.l3ib.org/nitrogen/
+# Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
+# Depends on: gtkmm librsvg
+
+name=nitrogen
+version=1.6.1
+release=1
+source=(https://github.com/l3ib/$name/releases/download/$version/$name-$version.tar.gz)
+
+build() {
+	cd nitrogen-$version
+
+	export LDFLAGS="$LDFLAGS -lX11"
+
+	./configure \
+		--prefix=/usr \
+		--mandir=/usr/man
+
+	make
+	make DESTDIR=$PKG install
+}

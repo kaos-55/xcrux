@@ -1,0 +1,18 @@
+# Description: A low-level configuration and settings management system
+# URL: http://wiki.gnome.org/Projects/dconf
+# Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
+# Depends on: meson ninja vala bash-completion
+
+name=dconf
+version=0.40.0
+release=1
+source=(https://download.gnome.org/sources/$name/0.40/$name-$version.tar.xz)
+
+build() {
+  cd $name-$version
+  meson builddir \
+    --prefix=/usr \
+    --libexecdir=/usr/lib/$name
+  ninja -C builddir
+  DESTDIR=$PKG ninja -C builddir install
+}

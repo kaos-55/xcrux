@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=SunClock
+Comment=Show illuminated portion of Earth
+Exec=/usr/bin/sunclock
+Icon=sunclock
+Categories=Utility;Clock;
+Keywords=Clock;Worldmap;Timezone;

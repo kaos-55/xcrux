@@ -1,0 +1,27 @@
+# Description: Open source web browser based on Firefox focusing on efficiency.
+# URL: https://linux.palemoon.org/
+# Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
+# Depends on: alsa-lib dbus-glib gtk2 gtk3 xorg-libxt nss desktop-file-utils 
+
+name=palemoon-gtk3-bin
+version=29.2.1
+release=1
+source=(https://linux.palemoon.org/datastore/release/palemoon-$version.linux-x86_64-gtk3.tar.xz
+	    palemoon.desktop)
+
+build() {
+  install -d "$PKG"/usr/{bin,lib}
+  cp -r palemoon/ "$PKG/usr/lib/palemoon"
+  ln -s ../lib/palemoon/palemoon "$PKG/usr/bin/palemoon"
+  install -Dm644 palemoon.desktop "$PKG/usr/share/applications/palemoon.desktop"
+
+  # icons
+  install -Dm644 palemoon/browser/chrome/icons/default/default16.png \
+    "$PKG/usr/share/icons/hicolor/16x16/apps/palemoon.png"
+  install -Dm644 palemoon/browser/chrome/icons/default/default32.png \
+    "$PKG/usr/share/icons/hicolor/32x32/apps/palemoon.png"
+  install -Dm644 palemoon/browser/chrome/icons/default/default48.png \
+    "$PKG/usr/share/icons/hicolor/48x48/apps/palemoon.png"
+  install -Dm644 palemoon/browser/icons/mozicon128.png \
+    "$PKG/usr/share/icons/hicolor/128x128/apps/palemoon.png"
+}

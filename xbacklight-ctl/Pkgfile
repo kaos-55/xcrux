@@ -1,0 +1,24 @@
+# Description: Use xbacklight easily and receive notifications with a progress bar.
+# URL: https://github.com/EnmanuelVT/xbacklight-ctl.git
+# Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
+# Depends on: xorg-xbacklight notify-send.sh 
+
+name=xbacklight-ctl
+version=git
+release=1
+source=(https://github.com/EnmanuelVT/xbacklight-ctl.git)
+
+build() {
+  git clone https://github.com/EnmanuelVT/xbacklight-ctl.git/
+  
+  cd xbacklight-ctl/doc
+  gzip xbacklight-ctl.1
+  cd ..
+  
+  install -Dm755 xbacklight-ctl "$PKG/usr/bin/xbacklight-ctl"
+  install -Dm644 LICENSE "$PKG/usr/share/licenses/$name/LICENSE"
+  install -Dm644 README.md "$PKG/usr/share/doc/$name/README.md"
+  cd doc
+  install -Dm644 xbacklight-ctl.1.gz "$PKG/usr/share/man/man1/xbacklight-ctl.1.gz"
+  cd ..
+}

@@ -1,0 +1,23 @@
+# Description: Window manager: speed, simplicity, and not getting in the user's way.
+# URL: http://www.ice-wm.org/
+# Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
+# Depends on: libao librsvg libsndfile xorg-libxcomposite xorg-libxdamage xorg-libxinerama xorg-libxpm xorg-libxrandr xorg-mkfontscale
+
+name=icewm
+version=2.6.0
+release=1
+source=(https://github.com/ice-wm/icewm/releases/download/$version/$name-$version.tar.lz)
+
+build() {
+	cd $name-$version
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--disable-nls
+
+	make
+	make DESTDIR=$PKG install
+
+	# asciidoctor
+	rm -rf $PKG/usr/share/doc
+}

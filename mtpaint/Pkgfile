@@ -1,0 +1,20 @@
+# Description: Paint program for creating icons and pixel art
+# URL: https://github.com/wjaguar/mtpaint
+# Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
+# Depends on: gtk3 openjpeg2 
+
+name=mtpaint
+version=3.50
+release=1
+source=(https://sourceforge.net/projects/mtpaint/files/mtpaint/3.50/$name-$version.tar.bz2)
+
+build() {
+  cd $name-$version
+  export CFLAGS="$(pkg-config openjp2 --cflags) -w $CFLAGS"
+  ./configure gtk3 --prefix=/usr --mandir=/usr/share/man \
+    man intl jpeg tiff cflags lcms2 jp2v2
+  make
+
+  make DESTDIR="$PKG" install
+}
+
