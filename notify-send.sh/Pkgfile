@@ -1,4 +1,4 @@
- Description: notify-send drop-in replacement with more features.
+# Description: notify-send drop-in replacement with more features.
 # URL: https://github.com/vlevit/notify-send.sh
 # Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
 # Depends on: glib 
