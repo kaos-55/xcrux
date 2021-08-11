@@ -1,7 +1,7 @@
 # Description: Compizconfig bindings for python
 # URL: https://gitlab.com/compiz/compizconfig-python/
 # Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
-# Depends on: glib compiz xorg-libsm xorg-libxdamage xorg-libxrandr python3 python-cython intltool pkgconf 
+# Depends on: glib compiz xorg-libsm xorg-libxdamage xorg-libxrandr python3 python-cython intltool pkg-config 
 
 name=compizconfig-python
 version=0.8.18
