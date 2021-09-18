@@ -4,7 +4,7 @@
 # Depends on: bc feh i3lock-color imagemagick xorg-xdpyinfo xorg-xrandr 
 
 name=betterlockscreen
-version=4.0.1
+version=4.0.3
 release=1
 source=(https://github.com/betterlockscreen/$name/archive/refs/tags/v$version.tar.gz)
 
