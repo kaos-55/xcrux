@@ -5,7 +5,7 @@
 # Optional:    vivaldi-ffmpeg-codecs
 
 name=vivaldi-bin
-version=4.1.2369.11-1
+version=4.2.2406.44-1
 release=1
 source=(https://downloads.vivaldi.com/stable/vivaldi-stable-$version.x86_64.rpm)
 
