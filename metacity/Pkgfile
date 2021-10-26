@@ -1,12 +1,12 @@
 # Description: Window manager of GNOME Flashback
-# URL: https://wiki.gnome.org/Projects/Metacity'
+# URL: https://wiki.gnome.org/Projects/Metacity
 # Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
 # Depends on: dconf libcanberra libgtop xorg-libsm xorg-libxres libxpresent gsettings-desktop-schemas gtk3 startup-notification zenity
 
 name=metacity
-version=3.40.0
+version=3.42.0
 release=1
-source=(https://download.gnome.org/sources/$name/3.40/$name-$version.tar.xz)
+source=(https://download.gnome.org/sources/$name/3.42/$name-$version.tar.xz)
 
 build() {
   cd $name-$version
@@ -15,5 +15,3 @@ build() {
   make
   make DESTDIR=$PKG install
 }
-
-
