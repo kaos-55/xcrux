@@ -2,10 +2,9 @@
 # URL:         https://vivaldi.com/
 # Maintainer:  kaos55, https://github.com/kaos-55/xcrux/issues
 # Depends on:  gtk3 cups nss dbus-glib alsa-lib desktop-file-utils shared-mime-info hicolor-icon-theme libnotify libxkbcommon
-# Optional:    vivaldi-ffmpeg-codecs
 
 name=vivaldi-bin
-version=4.3.2439.56-1
+version=5.1.2567.39-1
 release=1
 source=(https://downloads.vivaldi.com/stable/vivaldi-stable-$version.x86_64.rpm)
 
