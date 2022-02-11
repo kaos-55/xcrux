@@ -4,7 +4,7 @@
 # Depends on: gdk-pixbuf libwebp 
 
 name=webp-pixbuf-loader
-version=0.0.3
+version=0.0.4
 release=1
 source=(https://github.com/aruiz/webp-pixbuf-loader/archive/$version/$name-$version.tar.gz)
 
