@@ -1,10 +1,10 @@
 # Description: Compiz window manager
 # URL: http://www.compiz.org/
 # Maintainer: kaos55, https://github.com/kaos-55/xcrux/issues
-# Depends on: libwnck-gtk3 glibmm pygtk pyrex metacity
+# Depends on: libwnck-gtk3 glibmm glu protobuf python3-cairo python3-gobject python3-cython metacity
 
 name=compiz
-version=0.9.14.1
+version=0.9.14.2
 release=1
 source=(https://launchpad.net/$name/0.9.14/$version/+download/$name-$version.tar.xz)
 
@@ -12,17 +12,16 @@ build() {
 	cd $name-$version
 	mkdir build
 	cd build
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+	cmake .. \
+	      -DCMAKE_CXX_STANDARD=17 \
+	      -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DCMAKE_BUILD_TYPE=Release \
 	      -DBUILD_GNOME=OFF \
-	      -DBUILD_KDE=OFF \
 	      -DBUILD_METACITY=ON \
 	      -DBUILD_GTK=OFF \
+    	      -DCOMPIZ_WERROR=OFF \
 	      -DBUILD_TESTING=OFF
-	make
-	make DESTDIR=$PKG install
-	rm -rf $PKG/usr/share/locale
-	
-	      
-	
+	cmake --build $SRC/$name-$version/build
+	DESTDIR=$PKG cmake --install $SRC/$name-$version/build
+	rm -rf $PKG/usr/share/locale	
 }
