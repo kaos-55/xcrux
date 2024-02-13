@@ -1,0 +1,13 @@
+# Description: Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray
+# URL: https://launchpad.net/libappindicator
+# Maintainer: 
+# Depends on: libdbusmenu-gtk3 dbus-glib
+
+name=libappindicator-gtk3-compiz
+version=12.10
+release=1
+source=(https://ftp.inf.utfsm.cl/pub/linux/archlinux/pool/community/libappindicator-gtk3-12.10.0.r298-1-x86_64.pkg.tar.zst)
+
+build() {
+  bsdtar -x -f libappindicator-gtk3-12.10.0.r298-1-x86_64.pkg.tar.zst -C $PKG
+}
